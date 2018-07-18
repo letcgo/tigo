@@ -3,8 +3,15 @@
 
 
 # tigo
-## This is a tiny kits for golang.
+## This is a tiny framework for golang.
 
+# Feature
+- can custom producer
+- can custom workers
+- can custom signal handlers
+- logger with info/notice/warn/err
+- cli params helper
+- event monitor
 
 
 ```go
