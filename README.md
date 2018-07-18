@@ -28,7 +28,9 @@ import (
 
 func main()  {
 	dispatcher := new(app.Dispatcher)
+	//optional
 	app.RegistryLogger(app.NewLogger())
+	//optional
 	app.RegistryMonitor(app.NewMonitor())
 	dispatcher.Setup(func(pipeline chan<- *app.Task)  {
 		go func() {
@@ -39,6 +41,7 @@ func main()  {
 			}
 		}()
 	}, nil)
+	//optional
 	dispatcher.Workers(3)
 	dispatcher.RegistryWorker(func(task *app.Task) error {
 		time.Sleep(3 * time.Second)
@@ -46,6 +49,8 @@ func main()  {
 		panic(errors.New("worker error "))
 		return nil
 	})
+	
+    //optional	
 	app.SetSignHandler(func(s *os.Signal) {
 		fmt.Println("my sign handler", *s)
 		app.DefaultSignHandler(s)
