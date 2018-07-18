@@ -1,5 +1,10 @@
+![](http://ww1.sinaimg.cn/large/7c998145ly1fte3nhkhegj20b206sq2z.jpg)
+
+
+
 # tigo
 ## This is a tiny kits for golang.
+
 
 
 ```go
