@@ -1,5 +1,5 @@
 # tigo
-## This is a tiny go kits.
+## This is a tiny kits for golang.
 
 
 ```go
