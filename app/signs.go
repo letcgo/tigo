@@ -28,7 +28,7 @@ func WatchSignals(wg *sync.WaitGroup){
 				if !ok {
 					panic("signs occurs error")
 				}
-				fmt.Println("catched ",signal)
+				fmt.Println("signal catched ",signal)
 				signHandler(&signal)
 			}
 		}

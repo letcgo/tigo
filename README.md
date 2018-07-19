@@ -23,21 +23,20 @@
 package main
 
 import (
-	"tigo/app"
+	"github.com/tigo/app"
 	"strconv"
-	"fmt"
 	"time"
 	"os"
-	"errors"
+	"log"
 )
 
 func main()  {
 	dispatcher := new(app.Dispatcher)
-	//optional
-	app.RegistryLogger(app.NewLogger())
-	//optional
-	app.RegistryMonitor(app.NewMonitor())
-	dispatcher.Setup(func(pipeline chan<- *app.Task)  {
+	f,err := os.OpenFile("app.log", os.O_RDWR | os.O_CREATE , 0755)
+	app.CheckErr(err)
+	app.RegistryLogger(app.NewLogger(f, "", log.LstdFlags))
+	//app.RegistryLogger(app.NewLogger(os.Stdout, "", log.LstdFlags))
+	dispatcher.SetupHandler(func(pipeline chan<- *app.Task)  {
 		go func() {
 			for i:=0;i<=999;i++ {
 				pipeline<-&app.Task{
@@ -45,19 +44,23 @@ func main()  {
 				}
 			}
 		}()
-	}, nil)
-	//optional
+	})
+	dispatcher.RegistryChecker(func(e interface{}){
+		app.GetLogger().Info("my checker catch: %v\n ", e)
+	})
+	dispatcher.RegistryWorkerChecker(func(e interface{}){
+		app.NewMonitor().Notify("notify Dispatcher error", e)
+		app.GetLogger().Info("my worker checker catch:  ", e)
+	})
 	dispatcher.Workers(3)
 	dispatcher.RegistryWorker(func(task *app.Task) error {
-		time.Sleep(3 * time.Second)
-		fmt.Println("哈哈，task:",*task)
-		panic(errors.New("worker error "))
+		time.Sleep(1 * time.Second)
+		app.GetLogger().Info("哈哈，task:",*task)
+		panic("worker mocked error")
 		return nil
 	})
-	
-    //optional	
 	app.SetSignHandler(func(s *os.Signal) {
-		fmt.Println("my sign handler", *s)
+		app.GetLogger().Info("my sign handler", *s)
 		app.DefaultSignHandler(s)
 	})
 	app.Start(dispatcher)

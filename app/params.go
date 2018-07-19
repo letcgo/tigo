@@ -1,13 +1,21 @@
 package app
 
-import "flag"
-
+import (
+	"flag"
+	"os"
+)
+var help bool
+var envPath string
 func init()  {
-	var help bool
-	flag.BoolVar(&help, "help", false, "man")
+	flag.BoolVar(&help, "help", false, `help info`)
+	flag.StringVar(&envPath, "c", "", "<env file path>, default: ./.env")
 	flag.Parse()
-	if help {
+	if help || len(envPath)==0 {
 		flag.Usage()
+		os.Exit(1)
 	}
 }
 
+func EnvPath()string  {
+	return envPath
+}

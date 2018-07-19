@@ -1,45 +1,51 @@
 package app
 
-import "log"
+import (
+	"log"
+	"io"
+)
 
-var logger *Logger
+var logger ILogger
 
 type ILogger interface {
-	Info()
-	Notice()
-	Warn()
-	Err()
+	Info(v ...interface{})
+	Notice(v ...interface{})
+	Warn(v ...interface{})
+	Err(v ...interface{})
 }
 
 type Logger struct {
-	ILogger
-	log.Logger
+	logger *log.Logger
 }
 
 func (i *Logger)Info(v ...interface{}){
-	v = append(v, "INFO")
-	i.Println(v...)
+	v = append([]interface{}{"[INFO]"}, v...)
+	i.logger.Println(v...)
 }
 
 func (i *Logger)Notice(v ...interface{}){
-	v = append(v, "NOTICE")
-	i.Println(v...)
+	v = append([]interface{}{"[NOTICE]"}, v...)
+	i.logger.Println(v...)
 }
 
 func (i *Logger)Warn(v ...interface{}){
-	v = append(v, "WARN")
-	i.Println(v...)
+	v = append([]interface{}{"[WARN]"}, v...)
+	i.logger.Println(v...)
 }
 
 func (i *Logger)Err(v ...interface{}){
-	v = append(v, "ERR")
-	i.Println(v...)
+	v = append([]interface{}{"[ERR]"}, v...)
+	i.logger.Println(v...)
 }
 
-func NewLogger()*Logger{
-	return &Logger{}
+func NewLogger(out io.Writer, prefix string, flag int)ILogger{
+	return  &Logger{logger: log.New(out, prefix, flag)}
 }
 
-func RegistryLogger(log *Logger){
+func RegistryLogger(log ILogger){
 	logger = log
+}
+
+func GetLogger()ILogger{
+	return logger
 }
