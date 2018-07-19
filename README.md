@@ -21,6 +21,7 @@
 # Quick demo
 
 ```go
+//this is main.go
 package main
 
 import (
@@ -72,5 +73,8 @@ func main()  {
 ```
 
 
-
+```bash
+go get ./...
+go run src/app/main.go  -c ./.env
+```
 
