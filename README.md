@@ -10,11 +10,12 @@
 ![QQ群](https://img.shields.io/:QQ%E7%BE%A4-828486848-blue.svg)
 
 # Feature
-- can custom producer
-- can custom workers
-- can custom signal handlers
-- logger with info/notice/warn/err
-- cli params helper
+- customize producer
+- customize workers
+- customize signal handlers
+- customize logger with info/notice/warn/err
+- built in cli params helper
+- customize producer/worker checker, e.g. health checker
 - event monitor
 
 # Quick demo
