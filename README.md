@@ -2,7 +2,7 @@
 
 
 
-# tigo
+# Tigo
 ## This is a tiny framework for golang.
 
 
