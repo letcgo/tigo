@@ -76,6 +76,6 @@ func main()  {
 # Usage
 ```bash
 go get ./...
-go run src/app/main.go  -c ./.env
+go run src/app/main.go  -e ./.env
 ```
 

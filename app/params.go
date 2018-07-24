@@ -8,7 +8,7 @@ var help bool
 var envPath string
 func init()  {
 	flag.BoolVar(&help, "help", false, `help info`)
-	flag.StringVar(&envPath, "c", "", "<env file path>, default: ./.env")
+	flag.StringVar(&envPath, "e", "", "<env file path>, default: ./.env")
 	flag.Parse()
 	if help || len(envPath)==0 {
 		flag.Usage()
