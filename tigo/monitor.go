@@ -1,4 +1,4 @@
-package app
+package tigo
 
 
 type IMonitor interface {

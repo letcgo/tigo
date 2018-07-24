@@ -1,4 +1,4 @@
-package app
+package tigo
 
 type TaskHandler func(*Task)(error)
 type WorkerChecker func(interface{})

@@ -1,4 +1,4 @@
-package app
+package tigo
 
 type Task struct {
 	//context.Context

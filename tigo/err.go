@@ -1,4 +1,4 @@
-package app
+package tigo
 
 func CheckErr(e error){
 	if nil != e {
