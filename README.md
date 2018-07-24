@@ -6,7 +6,7 @@
 ## This is a tiny framework for golang.
 
 
-[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/letcgo/tigo?status.png)](http://godoc.org/github.com/letcgo/tigo)  [![travis](https://travis-ci.org/letcgo/tigo.svg?branch=master)](https://travis-ci.org/letcgo/tigo) [![Go Report Card](https://goreportcard.com/badge/github.com/letcgo/tigo)](https://goreportcard.com/report/github.com/letcgo/tigo) [![coveralls](https://coveralls.io/repos/letcgo/tigo/badge.svg?branch=master&service=github)](https://coveralls.io/github/letcgo/tigo?branch=master) 
+[![License](https://img.shields.io/:license-apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
 ![QQ群](https://img.shields.io/:QQ%E7%BE%A4-828486848-blue.svg)
 
 # Feature
