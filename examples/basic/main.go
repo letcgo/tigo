@@ -10,7 +10,7 @@ import (
 
 func main()  {
 	dispatcher := new(tigo.Dispatcher)
-	f,err := os.OpenFile("app.log", os.O_RDWR | os.O_CREATE , 0755)
+	f,err := os.OpenFile("app.log", os.O_RDWR | os.O_CREATE , 0644)
 	tigo.CheckErr(err)
 	tigo.RegistryLogger(tigo.NewLogger(f, "", log.LstdFlags))
 	//app.RegistryLogger(app.NewLogger(os.Stdout, "", log.LstdFlags))
