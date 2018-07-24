@@ -71,7 +71,7 @@ func main()  {
 
 # Usage
 ```bash
-go get ./...
+go get github.com/letcgo/tigo/...
 go run src/app/main.go  -e ./.env
 ```
 
